@@ -23,10 +23,15 @@ export class EmployeeComponent implements OnInit {
 
   onSubmit() {
     console.log(this.submitForm.value);
-    this.employeeService.insertEmployee(this.submitForm.value);
-    this.submitForm.reset();
-    this.toastr.success()
-
+    if (this.submitForm.value.$key === null) {
+      this.employeeService.insertEmployee(this.submitForm.value);
+      this.submitForm.reset();
+      this.toastr.success('Employee Created successfully', 'Register Employee');
+    } else {
+      this.employeeService.updateEmployee(this.submitForm.value);
+      this.submitForm.reset();
+      this.toastr.info('Employee Updated successfully', 'Update Employee');
+    }
   }
 
   resetForm() {

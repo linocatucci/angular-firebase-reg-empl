@@ -1,5 +1,5 @@
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-
+  <input class="form-control" type="hidden" name="$key" #$key="ngModel" [(ngModel)]="employeeService.selectedEmployee.$key">
   <div class="form-group">
     <label>Name</label>
     <input class="form-control" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" placeholder="Full Name" required>
@@ -28,5 +28,4 @@
       <i class="fa fa-repeat"></i>
       Reset Form</button>
   </div>
-
 </form>
